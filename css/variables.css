@@ -5,20 +5,20 @@
 
 :root {
     /* Color palette */
-    --primary: #2dd4bf;
+    --primary: #0d9488; /* Darkened from #2dd4bf for better contrast */
     --primary-dark: #0f766e;
-    --accent: #f43f5e;
+    --accent: #e11d48; /* Darkened from #f43f5e for better contrast */
 
     /* Light theme (default) */
     --secondary: #0f172a;
     --bg: #f8fafc;
     --bg-alt: #e2e8f0;
-    --text: #334155;
-    --text-light: #64748b;
+    --text: #1e293b; /* Darkened from #334155 for better contrast */
+    --text-light: #475569; /* Darkened from #64748b for better contrast */
     --card-bg: #ffffff;
     --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    --border-color: #e2e8f0;
-    --toggle-bg: #cbd5e1;
+    --border-color: #cbd5e1; /* Darkened from #e2e8f0 for better contrast */
+    --toggle-bg: #94a3b8; /* Darkened from #cbd5e1 for better contrast */
     --toggle-circle: #fff;
 
     /* Animation variables */
@@ -43,13 +43,13 @@
     --secondary: #0f172a;
     --bg: #0f172a;
     --bg-alt: #1e293b;
-    --text: #e2e8f0;
-    --text-light: #94a3b8;
+    --text: #f1f5f9; /* Lightened from #e2e8f0 for better contrast */
+    --text-light: #cbd5e1; /* Lightened from #94a3b8 for better contrast */
     --card-bg: #1e293b;
     --shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-    --border-color: #334155;
+    --border-color: #475569; /* Lightened from #334155 for better contrast */
     --toggle-bg: #0f172a;
-    --toggle-circle: #2dd4bf;
+    --toggle-circle: #0d9488; /* Changed from #2dd4bf to match primary */
 
     --glow-effect: 0 0 20px rgba(45, 212, 191, 0.7);
 

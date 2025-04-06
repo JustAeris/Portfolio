@@ -22,6 +22,10 @@ body {
     overflow-x: hidden;
 }
 
+body.no-scroll {
+    overflow: hidden;
+}
+
 .theme-transition {
     pointer-events: none;
 }

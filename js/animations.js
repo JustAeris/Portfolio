@@ -34,82 +34,88 @@ export function initTypingEffect() {
  * Initialize particles background in hero section
  */
 export function initParticlesBackground() {
-    if (typeof tsParticles === 'undefined') {
-        console.warn('tsParticles library not loaded');
+    // Vérification plus robuste
+    if (typeof tsParticles === 'undefined' || !tsParticles || !tsParticles.load) {
+        console.warn('tsParticles library not loaded or initialized properly');
         return;
     }
 
     const particlesContainer = document.getElementById('particles-bg');
     if (!particlesContainer) return;
 
-    tsParticles.load("particles-bg", {
-        fullScreen: { enable: false },
-        fpsLimit: 60,
-        particles: {
-            number: {
-                value: 40,
-                density: { enable: true, value_area: 800 }
-            },
-            color: { value: "#ffffff" },
-            shape: { type: "circle" },
-            opacity: {
-                value: 0.2,
-                random: true,
-                anim: {
+    try {
+        tsParticles.load("particles-bg", {
+            fullScreen: { enable: false },
+            fpsLimit: 60,
+            particles: {
+                number: {
+                    value: 40,
+                    density: { enable: true, value_area: 800 }
+                },
+                color: { value: "#ffffff" },
+                shape: { type: "circle" },
+                opacity: {
+                    value: 0.2,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 1,
+                        opacity_min: 0.3, // Valeur minimale plus élevée
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 2,
+                        size_min: 0.3,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#ffffff",
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
                     enable: true,
                     speed: 1,
-                    opacity_min: 0.3, // Valeur minimale plus élevée
-                    sync: false
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
                 }
             },
-            size: {
-                value: 3,
-                random: true,
-                anim: {
-                    enable: true,
-                    speed: 2,
-                    size_min: 0.3,
-                    sync: false
-                }
-            },
-            line_linked: {
-                enable: true,
-                distance: 150,
-                color: "#ffffff",
-                opacity: 0.2,
-                width: 1
-            },
-            move: {
-                enable: true,
-                speed: 1,
-                direction: "none",
-                random: true,
-                straight: false,
-                out_mode: "out",
-                bounce: false,
-            }
-        },
-        interactivity: {
-            detect_on: "canvas",
-            events: {
-                onhover: { enable: true, mode: "grab" },
-                onclick: { enable: true, mode: "push" },
-                resize: true
-            },
-            modes: {
-                grab: {
-                    distance: 140,
-                    line_linked: { opacity: 0.5 }
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "grab" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
                 },
-                push: { particles_nb: 2 }
-            }
-        },
-        retina_detect: true
-    }).then(container => {
-        window.particlesInstance = container;
-    }).catch(error => {
-        console.error("Particles initialization failed:", error);
-    });
+                modes: {
+                    grab: {
+                        distance: 140,
+                        line_linked: { opacity: 0.5 }
+                    },
+                    push: { particles_nb: 2 }
+                }
+            },
+            retina_detect: true
+        }).then(container => {
+            window.particlesInstance = container;
+        }).catch(error => {
+            console.error("Particles initialization failed:", error);
+        });
+    } catch (err) {
+        console.error("Error initializing particles:", err);
+        // Continuer l'exécution sans planter
+    }
 }
 
 /**

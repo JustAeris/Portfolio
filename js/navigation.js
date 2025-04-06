@@ -30,14 +30,18 @@ export function initMobileMenu() {
         }
     });
 
-    // Toggle mobile menu
+    // Toggle mobile menu - utilisation de passive:true pour améliorer les performances
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('active');
         navLinks.classList.toggle('active');
 
-        // Prevent body scrolling when menu is open
-        body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
-    });
+        // Prevent body scrolling when menu is open - utilisons une classe au lieu d'un style inline
+        if (navLinks.classList.contains('active')) {
+            body.classList.add('no-scroll');
+        } else {
+            body.classList.remove('no-scroll');
+        }
+    }, { passive: true });
 
     // Close menu when nav links are clicked
     navItems.forEach(item => {
@@ -46,7 +50,7 @@ export function initMobileMenu() {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
                 navLinks.classList.remove('active');
-                body.style.overflow = '';
+                body.classList.remove('no-scroll');
             });
         }
     });
@@ -58,7 +62,7 @@ export function initMobileMenu() {
             !navLinks.contains(e.target)) {
             hamburger.classList.remove('active');
             navLinks.classList.remove('active');
-            body.style.overflow = '';
+            body.classList.remove('no-scroll');
         }
     });
 }

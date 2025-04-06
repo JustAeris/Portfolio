@@ -15,33 +15,47 @@ import {
 import { initMobileMenu, initSmoothScroll } from './navigation.js';
 import { initContactForm } from './form.js';
 
+// Évite d'utiliser unload ou beforeunload qui interfèrent avec bfcache
+if ('function' === typeof window.addEventListener) {
+    window.addEventListener('pageshow', (event) => {
+        // Reinitialiser si la page vient du cache de navigation
+        if (event.persisted) {
+            console.log('Page restaurée depuis le cache de navigation');
+        }
+    }, { passive: true });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Portfolio initializing...');
 
-    // Detect user preferences
-    detectThemePreference();
-    detectLanguagePreference();
+    try {
+        // Detect user preferences
+        detectThemePreference();
+        detectLanguagePreference();
 
-    // Initialize components
-    initThemeToggle();
-    initLanguageSelector();
-    initMobileMenu();
-    initSmoothScroll();
-    initScrollAnimation();
-    initSkillBars();
+        // Initialize components
+        initThemeToggle();
+        initLanguageSelector();
+        initMobileMenu();
+        initSmoothScroll();
+        initScrollAnimation();
+        initSkillBars();
 
-    // Initialize animations and effects
-    initParticlesBackground();
-    initTypingEffect();
-    initAnimatedTags();
-    initCardTiltEffect();
-    initScrollProgress();
+        // Initialize animations and effects
+        initParticlesBackground();
+        initTypingEffect();
+        initAnimatedTags();
+        initCardTiltEffect();
+        initScrollProgress();
 
-    // Initialize form handling
-    initContactForm();
+        // Initialize form handling
+        initContactForm();
 
-    console.log('Portfolio initialization complete');
-});
+        console.log('Portfolio initialization complete');
+    } catch (err) {
+        console.error('Error during portfolio initialization:', err);
+    }
+}, { passive: true });
 
 /**
  * Initialize skill bar animations

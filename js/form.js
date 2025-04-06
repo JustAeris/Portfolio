@@ -7,60 +7,64 @@
  * Initialize contact form with validation and submission handling
  */
 export function initContactForm() {
-    const form = document.querySelector('.contact-form');
-    if (!form) return;
+    try {
+        const form = document.querySelector('.contact-form');
+        if (!form) return;
 
-    const submitBtn = form.querySelector('.submit-button');
-    if (!submitBtn) return;
+        const submitBtn = form.querySelector('.submit-button');
+        if (!submitBtn) return;
 
-    const currentLanguage = localStorage.getItem('preferredLanguage') || 'fr';
+        const currentLanguage = localStorage.getItem('preferredLanguage') || 'fr';
 
-    const messages = {
-        fr: {
-            loading: "Envoi en cours...",
-            success: "Message envoyé !",
-            error: "Erreur lors de l'envoi",
-            empty: "Veuillez remplir tous les champs",
-            invalidEmail: "Email invalide"
-        },
-        en: {
-            loading: "Sending...",
-            success: "Message sent!",
-            error: "Error sending message",
-            empty: "Please fill all fields",
-            invalidEmail: "Invalid email"
-        }
-    };
-
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        const nameInput = form.querySelector('#name');
-        const emailInput = form.querySelector('#email');
-        const messageInput = form.querySelector('#message');
-
-        if (!validateForm(nameInput, emailInput, messageInput, messages[currentLanguage])) {
-            return;
-        }
-
-        submitBtn.textContent = messages[currentLanguage].loading;
-        submitBtn.disabled = true;
-
-        simulateFormSubmission(form, submitBtn, messages[currentLanguage]);
-    });
-
-    const inputs = form.querySelectorAll('input, textarea');
-    inputs.forEach(input => {
-        input.addEventListener('input', () => {
-            input.classList.remove('error');
-
-            if (input.id === 'email' && input.value) {
-                if (!isValidEmail(input.value)) {
-                    input.classList.add('error');
-                }
+        const messages = {
+            fr: {
+                loading: "Envoi en cours...",
+                success: "Message envoyé !",
+                error: "Erreur lors de l'envoi",
+                empty: "Veuillez remplir tous les champs",
+                invalidEmail: "Email invalide"
+            },
+            en: {
+                loading: "Sending...",
+                success: "Message sent!",
+                error: "Error sending message",
+                empty: "Please fill all fields",
+                invalidEmail: "Invalid email"
             }
+        };
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const nameInput = form.querySelector('#name');
+            const emailInput = form.querySelector('#email');
+            const messageInput = form.querySelector('#message');
+
+            if (!validateForm(nameInput, emailInput, messageInput, messages[currentLanguage])) {
+                return;
+            }
+
+            submitBtn.textContent = messages[currentLanguage].loading;
+            submitBtn.disabled = true;
+
+            simulateFormSubmission(form, submitBtn, messages[currentLanguage]);
         });
-    });
+
+        const inputs = form.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                input.classList.remove('error');
+
+                if (input.id === 'email' && input.value) {
+                    if (!isValidEmail(input.value)) {
+                        input.classList.add('error');
+                    }
+                }
+            });
+        });
+    } catch (err) {
+        console.error("Error initializing contact form:", err);
+    }
 }
 
 /**
