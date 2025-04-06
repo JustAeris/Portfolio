@@ -58,7 +58,7 @@ export function initParticlesBackground() {
                 anim: {
                     enable: true,
                     speed: 1,
-                    opacity_min: 0.1,
+                    opacity_min: 0.3, // Valeur minimale plus élevée
                     sync: false
                 }
             },
@@ -107,13 +107,6 @@ export function initParticlesBackground() {
         retina_detect: true
     }).then(container => {
         window.particlesInstance = container;
-
-        const isDarkTheme = document.documentElement.classList.contains('dark-theme');
-        if (!isDarkTheme) {
-            container.options.particles.color.value = '#0f172a';
-            container.options.particles.line_linked.color = '#0f172a';
-            container.refresh();
-        }
     }).catch(error => {
         console.error("Particles initialization failed:", error);
     });

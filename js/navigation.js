@@ -4,7 +4,7 @@
  */
 
 /**
- * Initialize mobile menu functionality
+ * Initialize mobile menu functionality with sequential animations
  */
 export function initMobileMenu() {
     const hamburger = document.getElementById('hamburger');
@@ -14,9 +14,20 @@ export function initMobileMenu() {
 
     if (!hamburger || !navLinks) return;
 
-    // Add animation sequence index to nav items
+    // Feature detection for CSS Custom Properties
+    const supportsCustomProps = window.CSS &&
+        window.CSS.supports &&
+        window.CSS.supports('(--custom-prop: 0)');
+
+    // Add animation sequence index to nav items with appropriate fallback
     navItems.forEach((item, index) => {
-        item.style.setProperty('--i', index);
+        if (supportsCustomProps) {
+            // Modern approach with CSS variables
+            item.style.setProperty('--i', index);
+        } else {
+            // Legacy browser fallback
+            item.style.transitionDelay = `${0.1 * index}s`;
+        }
     });
 
     // Toggle mobile menu
@@ -24,6 +35,7 @@ export function initMobileMenu() {
         hamburger.classList.toggle('active');
         navLinks.classList.toggle('active');
 
+        // Prevent body scrolling when menu is open
         body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
     });
 
@@ -53,11 +65,13 @@ export function initMobileMenu() {
 
 /**
  * Initialize smooth scrolling for anchor links
+ * with respect for reduced motion preferences
  */
 export function initSmoothScroll() {
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
     if (!anchorLinks.length) return;
 
+    // Check for reduced motion preference
     const preferReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const scrollBehavior = preferReducedMotion ? 'auto' : 'smooth';
 
@@ -79,6 +93,7 @@ export function initSmoothScroll() {
                 behavior: scrollBehavior
             });
 
+            // Update URL without triggering scroll
             history.pushState(null, null, targetId);
         });
     });

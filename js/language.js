@@ -68,6 +68,11 @@ const translations = {
                 message: "Message",
                 message_placeholder: "Votre message",
                 submit: "Envoyer le message"
+            },
+            buttons: {
+                mail: "Me contacter par email",
+                github: "Voir mon GitHub",
+                linkedin: "Me suivre sur LinkedIn"
             }
         },
         footer: {
@@ -137,6 +142,11 @@ const translations = {
                 message: "Message",
                 message_placeholder: "Your message",
                 submit: "Send message"
+            },
+            buttons: {
+                mail: "Email me",
+                github: "Visit my GitHub",
+                linkedin: "Follow me on LinkedIn"
             }
         },
         footer: {
