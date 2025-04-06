@@ -116,11 +116,8 @@
 }
 
 /* Contact Section */
-.contact-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    max-width: 1000px;
+.contact-methods-wrapper {
+    max-width: 700px;
     margin: 0 auto;
 }
 

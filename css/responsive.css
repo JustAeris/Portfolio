@@ -5,16 +5,14 @@
 
 /* Large screens (992px and down) */
 @media screen and (max-width: 992px) {
-    .contact-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+    .contact-methods-wrapper {
+        width: 90%;
     }
 
     /* Disable transforms on cards for better performance */
     .skill-card,
     .project-card,
-    .contact-info,
-    .contact-form {
+    .contact-info {
         transform: none !important;
     }
 }

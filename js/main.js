@@ -13,7 +13,6 @@ import {
     initCardTiltEffect
 } from './animations.js';
 import { initMobileMenu, initSmoothScroll } from './navigation.js';
-import { initContactForm } from './form.js';
 
 // Évite d'utiliser unload ou beforeunload qui interfèrent avec bfcache
 if ('function' === typeof window.addEventListener) {
@@ -47,9 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
         initAnimatedTags();
         initCardTiltEffect();
         initScrollProgress();
-
-        // Initialize form handling
-        initContactForm();
 
         console.log('Portfolio initialization complete');
     } catch (err) {
@@ -87,8 +83,7 @@ function initScrollAnimation() {
         ...document.querySelectorAll('.skill-card'),
         ...document.querySelectorAll('.project-card'),
         ...document.querySelectorAll('.bio-text p'),
-        ...document.querySelectorAll('.contact-info'),
-        ...document.querySelectorAll('.contact-form')
+        ...document.querySelectorAll('.contact-info')
     ];
 
     if (!elements.length) return;
