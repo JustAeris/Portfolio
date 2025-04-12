@@ -4,9 +4,9 @@
         <!-- Gradient d'accent optimisé -->
         <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
             <!-- Variation subtile de la même couleur d'accent -->
-            <stop offset="0%" stop-color="#3de0cc" /> <!-- Version plus claire -->
-            <stop offset="50%" stop-color="#2dd4bf" /> <!-- Couleur d'accent principale -->
-            <stop offset="100%" stop-color="#0f766e" /> <!-- Version plus foncée -->
+            <stop offset="0%" stop-color="#60a5fa" /> <!-- Version plus claire (bleu ciel) -->
+            <stop offset="50%" stop-color="#1e40af" /> <!-- Couleur principale (bleu navy) -->
+            <stop offset="100%" stop-color="#3b0764" /> <!-- Version foncée (bleu-violet) -->
         </linearGradient>
 
         <!-- Effet de lueur pour les interactions -->

@@ -4,10 +4,10 @@
  */
 
 :root {
-    /* Color palette */
-    --primary: #0d9488; /* Darkened from #2dd4bf for better contrast */
-    --primary-dark: #0f766e;
-    --accent: #e11d48; /* Darkened from #f43f5e for better contrast */
+    /* Color palette - nouvelle palette bleu/violet */
+    --primary: #1e40af; /* Bleu navy */
+    --primary-dark: #3b0764; /* Bleu-violet foncé */
+    --accent: #e11d48;
 
     /* Light theme (default) */
     --secondary: #0f172a;
@@ -23,7 +23,7 @@
 
     /* Animation variables */
     --transition: all 0.3s ease;
-    --glow-effect: 0 0 15px rgba(45, 212, 191, 0.5);
+    --glow-effect: 0 0 15px rgba(30, 64, 175, 0.5);
     --hover-transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 
     /* Z-index layers */
@@ -38,20 +38,24 @@
     --button-transition: all var(--hover-duration) var(--hover-easing);
 }
 
-/* Dark theme */
+/* Dark theme - optimisé pour lisibilité */
 .dark-theme {
     --secondary: #0f172a;
     --bg: #0f172a;
     --bg-alt: #1e293b;
-    --text: #f1f5f9; /* Lightened from #e2e8f0 for better contrast */
-    --text-light: #cbd5e1; /* Lightened from #94a3b8 for better contrast */
+    --text: #f1f5f9;
+    --text-light: #cbd5e1;
     --card-bg: #1e293b;
     --shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-    --border-color: #475569; /* Lightened from #334155 for better contrast */
-    --toggle-bg: #0f172a;
-    --toggle-circle: #0d9488; /* Changed from #2dd4bf to match primary */
+    --border-color: #475569;
 
-    --glow-effect: 0 0 20px rgba(45, 212, 191, 0.7);
+    /* Ajustements pour meilleure lisibilité en mode sombre */
+    --primary: #3b82f6;
+    --primary-dark: #7e22ce;
+    --toggle-bg: #0f172a;
+    --toggle-circle: #3b82f6;
+
+    --glow-effect: 0 0 20px rgba(59, 130, 246, 0.7);
 
     color-scheme: dark;
 }
