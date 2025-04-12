@@ -190,10 +190,28 @@ export function initLanguageSelector() {
 
             document.body.classList.add('lang-changing');
 
+            // Mesurer les hauteurs actuelles pour une animation fluide
+            const elementsToAnimate = document.querySelectorAll('.bio-text p, .project-description, .subtitle, .section-title, [data-i18n]');
+            elementsToAnimate.forEach(el => {
+                // Stocker la hauteur actuelle pour référence
+                el.style.height = `${el.offsetHeight}px`;
+                el.style.display = 'block';
+            });
+
             setTimeout(() => {
                 setLanguage(language);
-                document.body.classList.remove('lang-changing');
-            }, 200);
+
+                // Permettre aux éléments de s'adapter à leur nouvelle taille
+                setTimeout(() => {
+                    elementsToAnimate.forEach(el => {
+                        // Réinitialiser pour permettre le redimensionnement naturel
+                        el.style.height = '';
+                        el.style.display = '';
+                    });
+
+                    document.body.classList.remove('lang-changing');
+                }, 400); // Délai pour l'animation de contenu
+            }, 300); // Délai pour l'animation de fade-out
         });
     });
 }
@@ -230,6 +248,8 @@ export function setLanguage(language) {
 
         if (translation) {
             element.textContent = translation;
+            element.classList.add('lang-text-transition');
+            setTimeout(() => element.classList.remove('lang-text-transition'), 200);
         }
     });
 
@@ -239,6 +259,8 @@ export function setLanguage(language) {
 
         if (translation) {
             element.placeholder = translation;
+            element.classList.add('lang-text-transition');
+            setTimeout(() => element.classList.remove('lang-text-transition'), 200);
         }
     });
 
@@ -251,7 +273,7 @@ export function setLanguage(language) {
 
             tagsArray.forEach(tag => {
                 const tagElement = document.createElement('span');
-                tagElement.className = 'tag';
+                tagElement.className = 'tag lang-text-transition';
                 tagElement.textContent = tag;
                 container.appendChild(tagElement);
             });
@@ -279,5 +301,7 @@ function updateFormSubmitText(language) {
     const submitButton = document.querySelector('.contact-form .submit-button');
     if (submitButton) {
         submitButton.textContent = translations[language].contact.form.submit;
+        submitButton.classList.add('lang-text-transition');
+        setTimeout(() => submitButton.classList.remove('lang-text-transition'), 200);
     }
 }

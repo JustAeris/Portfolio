@@ -140,3 +140,49 @@
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Animation de transition de langue */
+@keyframes textFadeOut {
+    0% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); }
+}
+
+@keyframes textFadeIn {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.lang-changing [data-i18n],
+.lang-changing [data-i18n-placeholder],
+.lang-changing [data-i18n-container] {
+    animation: textFadeOut 0.2s ease forwards;
+}
+
+.lang-text-transition {
+    animation: textFadeIn 0.4s ease forwards;
+}
+
+/* Conteneurs avec transition de taille fluide */
+.bio-text p,
+.project-description,
+.subtitle,
+.section-title,
+.tag,
+.skill-title,
+.contact-info p,
+.project-card .project-content,
+[data-i18n],
+[data-i18n-placeholder],
+[data-i18n-container] {
+    transition: height 0.5s ease, width 0.5s ease;
+}
+
+.lang-changing [data-i18n],
+.lang-changing [data-i18n-placeholder],
+.lang-changing [data-i18n-container] {
+    animation: textFadeOut 0.2s ease forwards;
+}
+
+.lang-text-transition {
+    animation: textFadeIn 0.4s ease forwards;
+}

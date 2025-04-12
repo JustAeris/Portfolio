@@ -185,3 +185,8 @@
 .scroll-progress.visible {
     opacity: 1;
 }
+
+/* Styles pour l'animation de changement de langue */
+body.lang-changing {
+    pointer-events: none;
+}
