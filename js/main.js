@@ -4,7 +4,6 @@
  */
 
 import { initThemeToggle, detectThemePreference } from './theme.js';
-import { initLanguageSelector, detectLanguagePreference } from './language.js';
 import {
     initTypingEffect,
     initParticlesBackground,
@@ -30,11 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
         // Detect user preferences
         detectThemePreference();
-        detectLanguagePreference();
 
         // Initialize components
         initThemeToggle();
-        initLanguageSelector();
         initMobileMenu();
         initSmoothScroll();
         initScrollAnimation();

@@ -86,18 +86,9 @@
         padding: 0.8rem 2rem;
     }
 
-    .language-selector,
     .theme-toggle {
         z-index: 110;
-    }
-
-    .language-selector {
-        margin-right: 1rem;
         margin-left: auto;
-    }
-
-    .theme-toggle {
-        margin-left: 0;
     }
 
     .section-title {
@@ -140,14 +131,6 @@
         grid-template-columns: 1fr;
     }
 
-    .lang-icon {
-        display: none;
-    }
-
-    .lang-btn {
-        padding: 0.2rem 0.4rem;
-        font-size: 0.75rem;
-    }
 
     /* Smaller theme toggle for mobile */
     .theme-label {
@@ -176,10 +159,6 @@
         padding: 0 1rem;
     }
 
-    .lang-btn {
-        padding: 0.2rem 0.3rem;
-        font-size: 0.7rem;
-    }
 
     /* Disable some animations on very small screens for performance */
     .skill-level::after {
